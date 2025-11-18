@@ -3,11 +3,10 @@
 LibraryVision ist ein generisches System zum automatisierten Erstellen einer
 zusammenhängenden, klickbaren Gesamt-PDF („Library Document“) aus:
 
-- einer Markdown-Übersicht  
+- Markdown-Übersicht  
 - mehreren externen PDF-Dateien in `./input/`  
 - Pandoc + XeLaTeX  
-- automatischer Link-Umschreibung  
-- und PDF-Einbettung inklusive „Zurück zur Übersicht“-Link.
+- Link-Navigation im Dokument mit automatischer Linkumwandlung  
 
 Das Projekt ist **allgemein gehalten**, universell einsetzbar für technische
 Dokumentationen, Unterlagensammlungen, Projekte, Archive oder beliebige
@@ -32,9 +31,9 @@ Projektname ist der Ordner in `./input/`
 - Erzeugung eines Library-Templates mit eingebetteten PDFs
 - Interne Hyperlinks auf exakte Seitenpositionen
 - Übersicht ohne sichtbare Seitennummern (optional)
-- Einbettung mit „Back-to-Overview“-Button
+- Navigation mit „Back-to-Overview“-Button
 - Konfiguration über `libraryvision.config`
-- Komplett CLI-basiert
+- CLI-basiert
 
 ---
 
@@ -68,7 +67,7 @@ Links auf PDFs sehen so aus:
 ```
 
 `libraryvision.sh` erkennt diese automatisch,
-normiert die Pfade, zählt die Seiten und berechnet interne Bigfile-Seiten.
+normiert die Pfade, zählt die Seiten und berechnet interne Dokumenten-Seiten.
 
 ---
 
@@ -130,10 +129,10 @@ Ergebnis:
 
 1. **Pfade extrahieren** aus `overview.md`
 2. **Library-Template erzeugen** mit `\includepdf`-Blöcken
-3. **Übersicht-PDF ohne Anhänge generieren** → liefert Startseiten-Offset
+3. **Übersicht-PDF ohne Anhänge generieren** → liefert Startseite
 4. **PDF-Seiten zählen** (`pdfinfo`)
 5. **Link-Umschreibung** → `\hyperlink{page.N}{Text}`
-6. **Finale LibraryVision-PDF bauen**
+6. **LibraryVision-PDF bauen**
 
 ---
 
@@ -142,11 +141,8 @@ Ergebnis:
 LibraryVision dient dazu, große PDF-Sammlungen elegant in einem einzigen,
 voll verlinkten PDF-Dokument darzustellen – ohne manuelle Pflege.
 
-Ideal für:
-
 - technische Dokumentationen  
 - Projektdokumente  
 - Sammlungen vieler PDFs  
 - interne Wissensarchive  
-- alles, was eine saubere, klickbare „PDF-Library“ braucht.  
 
