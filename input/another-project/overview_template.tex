@@ -1,0 +1,89 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\geometry{landscape,margin=1.7cm}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet,leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{xfp}
+
+\usepackage[most]{tcolorbox}
+\tcbset{
+  resourcebox/.style={
+    on line,
+    tcbox raise base,
+    coltext=black,
+    fontupper=\bfseries\color{black},
+    width=2.9cm,
+    arc=2.5pt,
+    boxrule=0.5pt,
+    left=3pt,
+    right=3pt,
+    top=1pt,
+    bottom=1pt,
+    boxsep=1pt,
+    center upper,
+    valign=center
+  }
+}
+\newtcbox{\scriptbox}{resourcebox, colback=RoyalBlue!12, colframe=RoyalBlue!65!black}
+\newtcbox{\gapbox}{resourcebox, colback=ForestGreen!12, colframe=ForestGreen!60!black}
+\newtcbox{\exercisebox}{resourcebox, colback=OrangeRed!12, colframe=OrangeRed!60!black}
+\newtcbox{\solutionbox}{resourcebox, colback=Gray!20, colframe=Gray!50!black}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=MidnightBlue,
+  urlcolor=MidnightBlue,
+  citecolor=MidnightBlue
+}
+
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{$title$}              % Projekttitel (von Pandoc gesetzt)
+\lhead{LibraryVision Overview} % Generische Kopfzeile
+\cfoot{\thepage}             % Seitenzahlen in der Übersicht
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\onehalfspacing
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+% Anker für den "Zurück zur Übersicht"-Button in den eingebetteten PDFs
+\hypertarget{overview}{}
+
+\begin{center}
+{\LARGE \textbf{$title$}}\\[0.5em]
+$if(subtitle)$
+{\large $subtitle$}\\[0.5em]
+$endif$
+$if(author)$
+{\normalsize $for(author)$$author$$sep$ \and $endfor$}\\[0.25em]
+$endif$
+\end{center}
+
+$body$
+
+\end{document}
+
